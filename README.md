@@ -297,13 +297,13 @@ The application provides comprehensive monitoring and metrics capabilities:
 - Ready for Grafana integration
 - Time-series data collection
 
-## 🔍 **¿Qué hace Spring Boot Actuator?**
+## 🔍 **What does Spring Boot Actuator do?**
 
-Spring Boot Actuator es una **biblioteca de monitoreo y gestión** que proporciona endpoints listos para producción para supervisar y administrar aplicaciones Spring Boot.
+Spring Boot Actuator is a **monitoring and management library** that provides production-ready endpoints for monitoring and managing Spring Boot applications.
 
-### **Características Principales:**
+### **Key Features:**
 
-#### 1. **Health Checks Automáticos** (`/actuator/health`)
+#### 1. **Automatic Health Checks** (`/actuator/health`)
 ```json
 {
   "status": "UP",
@@ -328,7 +328,7 @@ Spring Boot Actuator es una **biblioteca de monitoreo y gestión** que proporcio
 }
 ```
 
-#### 2. **Métricas del Sistema** (`/actuator/metrics`)
+#### 2. **System Metrics** (`/actuator/metrics`)
 ```json
 {
   "names": [
@@ -341,32 +341,32 @@ Spring Boot Actuator es una **biblioteca de monitoreo y gestión** que proporcio
 }
 ```
 
-#### 3. **Información de la Aplicación** (`/actuator/info`)
-- Versión de la aplicación
-- Detalles de compilación 
-- Información del entorno
+#### 3. **Application Information** (`/actuator/info`)
+- Application version
+- Build details 
+- Environment information
 
-#### 4. **Gestión de Configuración** (`/actuator/env`)
-- Variables de entorno
-- Propiedades de aplicación
-- Profiles activos
+#### 4. **Configuration Management** (`/actuator/env`)
+- Environment variables
+- Application properties
+- Active profiles
 
-#### 5. **Logging Dinámico** (`/actuator/loggers`)
-- Cambiar nivel de logs en tiempo real
-- Ver configuración actual de logging
+#### 5. **Dynamic Logging** (`/actuator/loggers`)
+- Change log levels in real time
+- View current logging configuration
 
-### **Beneficios en Producción:**
+### **Production Benefits:**
 
-1. **Monitoreo Proactivo**: Detectar problemas antes de que afecten usuarios
-2. **Debugging**: Información detallada para resolución de problemas  
-3. **Alertas**: Integración con sistemas de monitoreo (Prometheus + Grafana)
-4. **Compliance**: Cumplir requisitos de observabilidad en entornos empresariales
-5. **DevOps**: Facilita CI/CD y deployment automatizado
+1. **Proactive Monitoring**: Detect issues before they affect users
+2. **Debugging**: Detailed information for troubleshooting  
+3. **Alerting**: Integration with monitoring systems (Prometheus + Grafana)
+4. **Compliance**: Meet observability requirements in enterprise environments
+5. **DevOps**: Facilitates CI/CD and automated deployment
 
-### **Seguridad:**
+### **Security:**
 
 ```properties
-# Configuración segura para producción
+# Secure configuration for production
 management.endpoints.web.exposure.include=health,metrics,prometheus
 management.endpoint.health.show-details=when-authorized
 management.security.enabled=true
@@ -414,7 +414,7 @@ This is simpler and more reliable than complex idempotency services for this use
 ### ⚠️ **Limitation: Multiple Requests Due to Network Issues**
 
 **Problem Scenario:**
-Si un usuario tiene problemas de internet y hace clic múltiples veces en "apostar" porque la respuesta tarda, **se pueden procesar múltiples apuestas** ya que cada request tiene un `timestamp` diferente.
+If a user has internet problems and clicks "bet" multiple times because the response is slow, **multiple bets can be processed** since each request has a different `timestamp`.
 
 **Example:**
 ```
