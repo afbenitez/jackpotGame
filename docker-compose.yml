@@ -1,0 +1,35 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: jackpot-postgres
+    environment:
+      POSTGRES_DB: jackpot_db
+      POSTGRES_USER: jackpot_user
+      POSTGRES_PASSWORD: jackpot_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - jackpot-network
+
+  app:
+    build: .
+    container_name: jackpot-app
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/jackpot_db
+      SPRING_DATASOURCE_USERNAME: jackpot_user
+      SPRING_DATASOURCE_PASSWORD: jackpot_password
+    networks:
+      - jackpot-network
+
+volumes:
+  postgres_data:
+
+networks:
+  jackpot-network:
+    driver: bridge
